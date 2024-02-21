@@ -30,16 +30,16 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void amountSales() {
+    public void sumSales() {
         StatsService service = new StatsService();
 
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        long expectedAmount = 8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18;
+        long expectedSum = 8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18;
 
-        long actualAmount = service.sumSales(sales);
+        long actualSum = service.sumSales(sales);
 
-        Assertions.assertEquals(expectedAmount, actualAmount);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
 
     @Test

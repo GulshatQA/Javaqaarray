@@ -1,6 +1,7 @@
 package ru.netology.stats;
 
 public class StatsService {
+
     public int minSales(long[] sales) {
         int minMonth = 0; // номер месяца с минимальными продажами среди просмотренных ранее
 
@@ -23,63 +24,41 @@ public class StatsService {
         return maxMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
     }
 
-    public int amountSales(long[] sales) {
-        long amount = 0;
+    public long sumSales(long[] sales) {
+        int sum = 0;
 
-        for (int i = 0; i < sales.length; i++) {
-            amount = amount + sales[i];
+        for (long sale : sales) {
+            sum += sale;
+
         }
-
-        return (int) amount;
+        return sum;
     }
 
-    public int averageSales(long[] sales) {
-        int average = 0;
-        int amount = 0;
-
-        for (int i = 0; i < sales.length; i++) {
-            amount += sales[i];
-            average = amount / sales.length;
-        }
-
-        return average;
+    public long averageSales(long[] sales) {
+        long sum = sumSales(sales);
+        return sum / sales.length;
     }
 
-    public int theNumberOfMonthsWithBelowAverageSales(long[] sales) {
-        int average = 0;
-        int amount = 0;
-
-        for (int i = 0; i < sales.length; i++) {
-            amount += sales[i];
-            average = amount / sales.length;
-        }
-
-        int number = 0;
-        for (long i : sales) {
-            if (i < average) {
-                number++;
+    public int countLessThanAverage(long[] sales) {
+        long average = averageSales(sales);
+        int mounths = 0;
+        for (long sale : sales) {
+            if (sale < average) {
+                mounths++;
             }
         }
-
-        return number;
+        return mounths;
     }
 
-    public int theNumberOfMonthsWithAboveAverageSales(long[] sales) {
-        int average = 0;
-        int amount = 0;
-
-        for (int i = 0; i < sales.length; i++) {
-            amount += sales[i];
-            average = amount / sales.length;
-        }
-
-        int number = 0;
-        for (long i : sales) {
-            if (i > average) {
-                number++;
+    public int countMoreThanAverage(long[] sales) {
+        long average = averageSales(sales);
+        int mounths = 0;
+        for (long sale : sales) {
+            if (sale > average) {
+                mounths++;
             }
         }
-
-        return number;
+        return mounths;
     }
+
 }
